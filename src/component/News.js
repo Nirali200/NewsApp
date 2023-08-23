@@ -7,16 +7,41 @@ constructor(){
 super()
 this.state = {
 articles:[],
-loading:true}
+loading:false,
+page:1}
 }
 async componentDidMount(){
-      let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=e5a1cd408f8948c79b50b900baccb545";
+      let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=e5a1cd408f8948c79b50b900baccb545&page=1&pageSize=20";
       let data = await fetch(url);
       let parseData = await data.json();
       console.log(data);
-      this.setState({articles:parseData.articles})
+      this.setState({articles:parseData.articles,totalResults: parseData.totalResults})
 }
+handlePre = async () =>{
+    console.log("Pre")
+    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=e5a1cd408f8948c79b50b900baccb545&page=${this.state.page - 1}&pageSize=20`;
+      let data = await fetch(url);
+      let parseData = await data.json();
+      console.log(data);
+  this.setState({
+    page: this.state.page - 1,
+    articles:parseData.articles
+  })
 
+}
+handleNext =async () =>{
+  console.log("Next")
+  if(this.state.page + 1 > Math.ceil(this.state.totalResults/20)){}
+  else{
+  let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=e5a1cd408f8948c79b50b900baccb545&page=${this.state.page + 1}&pageSize=20`;
+      let data = await fetch(url);
+      let parseData = await data.json();
+      console.log(data);
+  this.setState({
+    page: this.state.page + 1,
+    articles:parseData.articles
+  })}
+}
   render() {
     return (
       <div className='container my-3'>
@@ -27,7 +52,10 @@ async componentDidMount(){
         <NewsItem  title={element.title} description={element.description} imageUrl={element.urlToImage} newsUrl={element.url}/>
         </div>
         })}
-        
+        <div className="container d-flex justify-content-between">
+        <button disabled={this.state.page<=1} type="button" class="btn btn-primary" onClick={this.handlePre}> &larr; Previous</button>
+        <button type="button" class="btn btn-primary" onClick={this.handleNext}>Next &rarr;</button>
+        </div>
         </div>
       </div>
     )
