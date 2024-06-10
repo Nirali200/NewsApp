@@ -11,6 +11,8 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
+- [Contact](#handshake-contact)
+- [Acknowledgements](#gem-acknowledgements)
 
 
 ## :star2: About the Project
@@ -23,6 +25,10 @@
 
 
 ## :toolbox: Getting Started
+
+### :bangbang: Prerequisites
+
+- Install Node JS in your computer<a href="https://nodejs.org/en/"> Here</a>
 
 ### :gear: Installation
 
@@ -59,3 +65,17 @@ Start the development server
 ```bash
 npm start
 ```
+
+## :handshake: Contact
+
+Nirali Darji - - darjinirali08@gmail.com
+
+Project Link: [https://github.com/Nirali200/NewsApp](https://github.com/Nirali200/NewsApp)
+
+## :gem: Acknowledgements
+
+Use this section to mention useful resources and libraries that you have used in your projects.
+
+- [News API](https://newsapi.org/)
+- [Bootstrap](https://getbootstrap.com/)
+- [ReactJs](https://react.dev/)
